@@ -3,26 +3,36 @@ import {useState} from 'react'
 import CropSquare from './CropSquare'
 import EXIF from 'exif-js'
 
-export default function Image ({data}) {
+export default function Image ({data, onChange}) {
     const filePath = 'images/' + data[0]
     const fileName = data[1]
 
-    let [cropOffsetX, setOffsetX] = useState(0)
-    let [cropOffsetY, setOffsetY] = useState(0)
+    let cropOffsetX = data[2]
+    let cropOffsetY = data[3]
     let [imageWidth, setImageWidth] = useState(0)
     let [imageHeight, setImageHeight] = useState(0)
 
-    const onImgLoad = function (e) {
+    const setOffsetX = function(fn){
+        data[2] = fn(cropOffsetX)
+        onChange(data)
+    }
+    
+    const setOffsetY = function(fn){
+        data[3] = fn(cropOffsetY)
+        onChange(data)
+    }
+
+    const handleImgLoad = function (e) {
         let img = e.target
         setImageWidth(img.naturalWidth)
         setImageHeight(img.naturalHeight)
 
         EXIF.getData(img, function() {
-            let data = {
+            let exifData = {
                 make : EXIF.getTag(this, "Make"),
                 model : EXIF.getTag(this, "Model"),
                 iso : EXIF.getTag(this, "ISOSpeedRatings"), // ISO, PhotographicSensitivity
-                speed : EXIF.getTag(this, "ExposureTime"),
+                exposureTime : EXIF.getTag(this, "ExposureTime"),
                 shutterSpeed : EXIF.getTag(this, "ShutterSpeedValue"),
                 aperture : EXIF.getTag(this, "ApertureValue"),
                 brightness : EXIF.getTag(this, "Brightness"),
@@ -30,7 +40,14 @@ export default function Image ({data}) {
                 focal : EXIF.getTag(this, "FocalLength"),
                 lens : EXIF.getTag(this, "LensInfo"),
             }
-            console.log(data)
+            onChange(data.concat([
+                exifData.iso, 
+                '1/' + exifData.exposureTime.denominator/exifData.exposureTime.numerator,
+                exifData.aperture || '?',
+                exifData.focal.numerator || '?'
+            ]))
+
+            console.log('EXIF', exifData)
         })
     }
 
@@ -38,7 +55,7 @@ export default function Image ({data}) {
         <div className="image">
             {fileName}
             <div className="image-preview">
-                <img src={filePath} alt="" onLoad={onImgLoad}></img>
+                <img src={filePath} alt="" onLoad={handleImgLoad}></img>
                 <CropSquare size={[imageWidth, imageHeight]} offset={[cropOffsetX,cropOffsetY]} crop={[300,300]}></CropSquare>
             </div>
             <ImageCrop filePath={filePath} offset={[cropOffsetX,cropOffsetY]} size={[300,300]}></ImageCrop>
