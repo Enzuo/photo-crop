@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import Image from './components/Image'
 
 function App() {
+  const images = [
+    // filePath, fileName
+    ['P1240562.JPG', 'image 1'],
+    ['P1240562.JPG', 'image 2'],
+  ]
+
+  const ImagesList = images.map(d => <Image data={d}></Image>)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        {ImagesList}
+      </div>
     </div>
   );
 }
