@@ -1,6 +1,7 @@
 import ImageCrop from './ImageCrop'
 import {useState} from 'react'
 import CropSquare from './CropSquare'
+import EXIF from 'exif-js'
 
 export default function Image ({data}) {
     const filePath = 'images/' + data[0]
@@ -13,10 +14,24 @@ export default function Image ({data}) {
 
     const onImgLoad = function (e) {
         let img = e.target
-        console.log(img)
         setImageWidth(img.naturalWidth)
         setImageHeight(img.naturalHeight)
-        console.log(e, img.height, img.width)
+
+        EXIF.getData(img, function() {
+            let data = {
+                make : EXIF.getTag(this, "Make"),
+                model : EXIF.getTag(this, "Model"),
+                iso : EXIF.getTag(this, "ISOSpeedRatings"), // ISO, PhotographicSensitivity
+                speed : EXIF.getTag(this, "ExposureTime"),
+                shutterSpeed : EXIF.getTag(this, "ShutterSpeedValue"),
+                aperture : EXIF.getTag(this, "ApertureValue"),
+                brightness : EXIF.getTag(this, "Brightness"),
+                program : EXIF.getTag(this, "ExposureProgram"),
+                focal : EXIF.getTag(this, "FocalLength"),
+                lens : EXIF.getTag(this, "LensInfo"),
+            }
+            console.log(data)
+        })
     }
 
     return (
