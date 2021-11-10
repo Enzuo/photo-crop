@@ -32,10 +32,8 @@ export default function Image ({data, onChange}) {
                 make : EXIF.getTag(this, "Make"),
                 model : EXIF.getTag(this, "Model"),
                 iso : EXIF.getTag(this, "ISOSpeedRatings"), // ISO, PhotographicSensitivity
-                exposureTime : EXIF.getTag(this, "ExposureTime"),
-                shutterSpeed : EXIF.getTag(this, "ShutterSpeedValue"),
-                aperture : EXIF.getTag(this, "ApertureValue"),
-                brightness : EXIF.getTag(this, "Brightness"),
+                exposureTime : EXIF.getTag(this, "ExposureTime"), // ShutterSpeedValue
+                aperture : EXIF.getTag(this, "FNumber"),
                 program : EXIF.getTag(this, "ExposureProgram"),
                 focal : EXIF.getTag(this, "FocalLength"),
                 lens : EXIF.getTag(this, "LensInfo"),
@@ -43,8 +41,8 @@ export default function Image ({data, onChange}) {
             onChange(data.concat([
                 exifData.iso, 
                 '1/' + exifData.exposureTime.denominator/exifData.exposureTime.numerator,
-                exifData.aperture || '?',
-                exifData.focal.numerator || '?'
+                'f/' + (exifData.aperture || '?'),
+                (exifData.focal.numerator/exifData.focal.denominator || '?') + 'mm'
             ]))
 
             console.log('EXIF', exifData)
@@ -61,13 +59,13 @@ export default function Image ({data, onChange}) {
             <ImageCrop filePath={filePath} offset={[cropOffsetX,cropOffsetY]} size={[300,300]}></ImageCrop>
             <p>
                 Offset x : 
-                <input value={cropOffsetX} type="number" onChange={e => setOffsetX(parseInt(e.target.value))}/>
+                <input value={cropOffsetX} type="number" onChange={e => setOffsetX(()=>parseInt(e.target.value))}/>
                 <button onClick={() => setOffsetX((v) => v + 100)}>+</button>
                 <button onClick={() => setOffsetX((v) => v - 100)}>-</button>
             </p>
             <p>
                 Offset y : 
-                <input value={cropOffsetY} type="number" onChange={e => setOffsetY(parseInt(e.target.value))}/>
+                <input value={cropOffsetY} type="number" onChange={e => setOffsetY(()=>parseInt(e.target.value))}/>
                 <button onClick={() => setOffsetY((v) => v + 100)}>+</button>
                 <button onClick={() => setOffsetY((v) => v - 100)}>-</button>
             </p>
