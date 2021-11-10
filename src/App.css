@@ -5,8 +5,7 @@ html, body {
   width:100%;
 }
 .container {
-  display: grid;
-  grid-template-columns: repeat(4, 25% [col-start]);
+  display: flex;
 }
 
 .image{
