@@ -12,6 +12,9 @@ html, body {
 .image{
   padding:10px;
 }
+.image-preview{
+  position:relative;
+}
 .image img{
   width:100%;
 }
@@ -19,4 +22,9 @@ html, body {
 .image .crop{
   width:100%;
   height:300px;
+}
+
+.crop-square{
+  position:absolute;
+  border:1px solid red;
 }

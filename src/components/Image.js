@@ -1,5 +1,6 @@
 import ImageCrop from './ImageCrop'
 import {useState} from 'react'
+import CropSquare from './CropSquare'
 
 export default function Image ({data}) {
     const filePath = 'images/' + data[0]
@@ -7,11 +8,24 @@ export default function Image ({data}) {
 
     let [cropOffsetX, setOffsetX] = useState(0)
     let [cropOffsetY, setOffsetY] = useState(0)
+    let [imageWidth, setImageWidth] = useState(0)
+    let [imageHeight, setImageHeight] = useState(0)
+
+    const onImgLoad = function (e) {
+        let img = e.target
+        console.log(img)
+        setImageWidth(img.naturalWidth)
+        setImageHeight(img.naturalHeight)
+        console.log(e, img.height, img.width)
+    }
 
     return (
         <div className="image">
             {fileName}
-            <img src={filePath} alt=""></img>
+            <div className="image-preview">
+                <img src={filePath} alt="" onLoad={onImgLoad}></img>
+                <CropSquare size={[imageWidth, imageHeight]} offset={[cropOffsetX,cropOffsetY]} crop={[300,300]}></CropSquare>
+            </div>
             <ImageCrop filePath={filePath} offset={[cropOffsetX,cropOffsetY]} size={[300,300]}></ImageCrop>
             <p>
                 Offset x : 
