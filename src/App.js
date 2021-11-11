@@ -5,9 +5,11 @@ import { useState } from 'react'
 
 function App() {
   const baseImages = [
-    // filePath, fileName
-    ['P1240562.JPG', 'image 1', 0, 0],
-    ['P1240562.JPG', 'image 2', 0, 0],
+    // filePath, fileName, crop x, crop y
+    ['P1270610.JPG','tamron 26A f8',2580,2445],
+    ['P1270607.JPG','vivitar series 1',2860,2090],
+    ['P1270606.JPG','minolta',2990,2410],
+    ['P1270605.JPG','olympus',2630,2340],
   ]
 
   const [images, setImages] = useState(baseImages)
