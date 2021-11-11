@@ -129,7 +129,7 @@ function htmlLegendPhoto(p){
         legend +=' - '
     }
     if(p.speed){
-        legend +=' - '+p.speed+' '+p.aperture+' '+p.focal
+        legend += p.speed+' '+p.aperture+' '+p.focal
     }
     legend += '</legend>'
     return legend
