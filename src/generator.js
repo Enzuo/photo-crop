@@ -2,12 +2,16 @@ const fs = require('fs')
 const path = require('path')
 const gm = require('gm')//.subClass({imageMagick: true})
 
+const CROP_SIZE = [300,300]
+const RESIZE_SIZE = [500,500]
+const PHOTOS_PER_LINE = 5
+const DATA_FILE = './data-zoom-compare'
+const OUTPUT_HTML = 'photo.html'
 
-const dataFile = './data-zoom-compare'
-const dataPath = path.join(__dirname,dataFile)
+
+const dataPath = path.join(__dirname,DATA_FILE)
 const dataContent = fs.readFileSync(dataPath, {encoding: 'utf-8'})
 const dataLine = dataContent.split('\n')
-
 
 const parsedContent = []
 dataLine.forEach((line) => {
@@ -24,6 +28,7 @@ dataLine.forEach((line) => {
     addPhoto(line, parsedContent)
 })
 generateHtml(parsedContent)
+
 
 function addPhoto(line, ctt){
     let content = line.split(',')
@@ -44,9 +49,8 @@ function addPhoto(line, ctt){
     }
 
     // add photo to parsed content
-    const maxPhotoPerLine = 5
     let lastCtt = ctt[ctt.length-1]
-    if(lastCtt && lastCtt.type === 'photo' && lastCtt.content.length < maxPhotoPerLine){
+    if(lastCtt && lastCtt.type === 'photo' && lastCtt.content.length < PHOTOS_PER_LINE){
         lastCtt.content.push(photo)
     }
     else {
@@ -55,8 +59,6 @@ function addPhoto(line, ctt){
 }
 
 function generateHtml(parsedContent){
-    console.log(JSON.stringify(parsedContent, null, 2))
-
     let body = ''
 
     parsedContent.forEach(element => {
@@ -76,8 +78,8 @@ function generateHtml(parsedContent){
             body += '<div class="photo-container">\n'
             element.content.forEach(p => {
                 body += '\t<div class="photo">\n'
-                body += '\t\t'+imgPhoto(p)+'\n'
-                body += '\t\t'+legendPhoto(p)+'\n'
+                body += '\t\t'+htmlPhoto(p)+'\n'
+                body += '\t\t'+htmlLegendPhoto(p)+'\n'
                 body += '\t</div>\n'
             })
             body += '</div>\n'
@@ -96,13 +98,7 @@ function generateHtml(parsedContent){
     let style = `
 .photo-container {
     display: grid;
-    grid-template-columns: repeat(5, 20% [col-start]);
-}
-.photo {
-    padding: 0 5px;
-}
-.photo img {
-    max-width:100%;
+    grid-template-columns: repeat(${PHOTOS_PER_LINE}, ${100/PHOTOS_PER_LINE}% [col-start]);
 }
     `
     let html = `
@@ -115,18 +111,16 @@ ${body}
 </body>
     `
 
-    console.log(html)
-
-    fs.writeFileSync('photo.html', html)
+    fs.writeFileSync(OUTPUT_HTML, html)
 }
 
-function imgPhoto(p){
+function htmlPhoto(p){
     if(!p.file){
         return '<div class="photo-box"></div>'
     }
     return '<img src="./public/crops/'+p.file+'" alt="'+p.name+'"/>'
 }
-function legendPhoto(p){
+function htmlLegendPhoto(p){
     let legend = '<legend>'
     if(p.name){
         legend += p.name
@@ -152,10 +146,10 @@ function cropPhoto(photo){
 
     let file = gm(sourcePath)
     if(shouldCrop){
-        file.crop(300, 300, photo.cropx, photo.cropy)
+        file.crop(CROP_SIZE[0], CROP_SIZE[1], photo.cropx, photo.cropy)
     }
     else{
-        file.resize(300, 300)
+        file.resize(RESIZE_SIZE[0], RESIZE_SIZE[1])
     }
     file.noProfile()
         .write(targetPath, function (err) {

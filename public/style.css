@@ -13,3 +13,10 @@ p {
     margin-top:10px;
     margin-bottom:25px;
 }
+
+.photo {
+    padding: 0 5px;
+}
+.photo img {
+    max-width:100%;
+}
