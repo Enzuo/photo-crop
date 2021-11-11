@@ -61,6 +61,10 @@ function generateHtml(parsedContent){
 
     parsedContent.forEach(element => {
         if(element.type === 'title'){
+            if(body !== ''){
+                body += '</section>\n'
+            }
+            body += '<section>'
             body += '<h1>'+element.content+'</h1>\n'
         }
 
