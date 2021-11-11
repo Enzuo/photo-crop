@@ -1,0 +1,14 @@
+h1{
+    font-size:30px;
+    margin:25px 5px;
+}
+
+p {
+    font-size:22px;
+    margin: 10px 5px 10px;
+    text-align:center;
+}
+
+.photo-container {
+    margin-bottom:25px;
+}
