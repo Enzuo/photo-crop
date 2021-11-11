@@ -5,11 +5,11 @@ const gm = require('gm')//.subClass({imageMagick: true})
 const CROP_SIZE = [300,300]
 const RESIZE_SIZE = [500,500]
 const PHOTOS_PER_LINE = 5
-const DATA_FILE = './data-zoom-compare'
+const DATA_FILE = 'data-zoom-compare'
 const OUTPUT_HTML = 'photo.html'
 
 
-const dataPath = path.join(__dirname,DATA_FILE)
+const dataPath = DATA_FILE
 const dataContent = fs.readFileSync(dataPath, {encoding: 'utf-8'})
 const dataLine = dataContent.split('\n')
 
