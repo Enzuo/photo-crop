@@ -39,26 +39,9 @@ function addPhoto(line, ctt){
     }
 
     // crop or resize
-    let sourcePath = path.join('public','images', photo.source)
-    let targetName = photo.source
-    let shouldCrop = !!photo.cropx
-    if(shouldCrop){
-        targetName = path.parse(photo.source).name + '_' + photo.cropx + '_' + photo.cropy + '.jpg'
+    if(photo.source !== '--'){
+        photo.file = cropPhoto(photo)
     }
-    let targetPath = path.join('public','crops', targetName)
-
-    let file = gm(sourcePath)
-    if(shouldCrop){
-        file.crop(300, 300, photo.cropx, photo.cropy)
-    }
-    else{
-        file.resize(300, 300)
-    }
-    file.noProfile()
-        .write(targetPath, function (err) {
-            if (!err) console.log('done');
-        });
-    photo.file = targetName
 
     // add photo to parsed content
     const maxPhotoPerLine = 5
@@ -89,8 +72,8 @@ function generateHtml(parsedContent){
             body += '<div class="photo-container">\n'
             element.content.forEach(p => {
                 body += '\t<div class="photo">\n'
-                body += '\t\t<img src="./public/crops/'+p.file+'" alt="'+p.name+'"/>\n'
-                body += '\t\t<legend>'+p.name+' - '+p.speed+' '+p.aperture+' '+p.focal+'</legend>\n'
+                body += '\t\t'+imgPhoto(p)+'\n'
+                body += '\t\t'+legendPhoto(p)+'\n'
                 body += '\t</div>\n'
             })
             body += '</div>\n'
@@ -131,4 +114,48 @@ ${body}
     console.log(html)
 
     fs.writeFileSync('photo.html', html)
+}
+
+function imgPhoto(p){
+    if(!p.file){
+        return '<div class="photo-box"></div>'
+    }
+    return '<img src="./public/crops/'+p.file+'" alt="'+p.name+'"/>'
+}
+function legendPhoto(p){
+    let legend = '<legend>'
+    if(p.name){
+        legend += p.name
+    }
+    if(p.name && p.speed){
+        legend +=' - '
+    }
+    if(p.speed){
+        legend +=' - '+p.speed+' '+p.aperture+' '+p.focal
+    }
+    legend += '</legend>'
+    return legend
+}
+
+function cropPhoto(photo){
+    let sourcePath = path.join('public','images', photo.source)
+    let targetName = photo.source
+    let shouldCrop = !!photo.cropx
+    if(shouldCrop){
+        targetName = path.parse(photo.source).name + '_' + photo.cropx + '_' + photo.cropy + '.jpg'
+    }
+    let targetPath = path.join('public','crops', targetName)
+
+    let file = gm(sourcePath)
+    if(shouldCrop){
+        file.crop(300, 300, photo.cropx, photo.cropy)
+    }
+    else{
+        file.resize(300, 300)
+    }
+    file.noProfile()
+        .write(targetPath, function (err) {
+            if (!err) console.log('done');
+        });
+    return targetName
 }
