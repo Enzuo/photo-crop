@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+const gm = require('gm')//.subClass({imageMagick: true})
+
 
 const dataFile = './data-zoom-compare'
 const dataPath = path.join(__dirname,dataFile)
@@ -21,16 +23,42 @@ dataLine.forEach((line) => {
     }
     addPhoto(line, parsedContent)
 })
-console.log(parsedContent)
+generateHtml(parsedContent)
 
 function addPhoto(line, ctt){
     let content = line.split(',')
     let photo = {
-        file : content[0],
+        source : content[0],
         name : content[1],
         cropx : content[2], 
         cropy : content[3],
+        iso : content[4],
+        speed : content[5],
+        aperture : content[6],
+        focal : content[7],
     }
+
+    // crop or resize
+    let sourcePath = path.join('public','images', photo.source)
+    let targetName = photo.source
+    let shouldCrop = !!photo.cropx
+    if(shouldCrop){
+        targetName = path.parse(photo.source).name + '_' + photo.cropx + '_' + photo.cropy + '.jpg'
+    }
+    let targetPath = path.join('public','crops', targetName)
+
+    let file = gm(sourcePath)
+    if(shouldCrop){
+        file.crop(300, 300, photo.cropx, photo.cropy)
+    }
+    else{
+        file.resize(300, 300)
+    }
+    file.noProfile()
+        .write(targetPath, function (err) {
+            if (!err) console.log('done');
+        });
+    photo.file = targetName
 
     // add photo to parsed content
     const maxPhotoPerLine = 5
@@ -41,4 +69,66 @@ function addPhoto(line, ctt){
     else {
         ctt.push({type : 'photo', content : [photo]})
     }
+}
+
+function generateHtml(parsedContent){
+    console.log(JSON.stringify(parsedContent, null, 2))
+
+    let body = ''
+
+    parsedContent.forEach(element => {
+        if(element.type === 'title'){
+            body += '<h1>'+element.content+'</h1>\n'
+        }
+
+        if(element.type === 'text'){
+            body += '<p>'+element.content+'</p>\n'
+        }
+
+        if(element.type === 'photo'){
+            body += '<div class="photo-container">\n'
+            element.content.forEach(p => {
+                body += '\t<div class="photo">\n'
+                body += '\t\t<img src="./public/crops/'+p.file+'" alt="'+p.name+'"/>\n'
+                body += '\t\t<legend>'+p.name+' - '+p.speed+' '+p.aperture+' '+p.focal+'</legend>\n'
+                body += '\t</div>\n'
+            })
+            body += '</div>\n'
+        }
+    })
+
+    let header = `
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./public/reset.css">
+<link rel="stylesheet" href="./public/style.css">
+    `
+    let style = `
+.photo-container {
+    display: grid;
+    grid-template-columns: repeat(5, 20% [col-start]);
+}
+.photo {
+    padding: 0 5px;
+}
+.photo img {
+    max-width:100%;
+}
+    `
+    let html = `
+${header}
+<style>
+${style}
+</style>
+<body>
+${body}
+</body>
+    `
+
+    console.log(html)
+
+    fs.writeFileSync('photo.html', html)
 }

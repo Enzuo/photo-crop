@@ -24,3 +24,5 @@ yarn-error.log*
 
 # images
 public/images
+public/crops
+public/images copy
