@@ -40,9 +40,9 @@ export default function Image ({data, onChange}) {
             }
             onChange(data.concat([
                 exifData.iso, 
-                '1/' + exifData.exposureTime.denominator/exifData.exposureTime.numerator,
+                '1/' + (exifData.exposureTime ? exifData.exposureTime.denominator/exifData.exposureTime.numerator : '?'),
                 'f/' + (exifData.aperture || '?'),
-                (exifData.focal.numerator/exifData.focal.denominator || '?') + 'mm'
+                (exifData.focal ? exifData.focal.numerator/exifData.focal.denominator || '?' : '?') + 'mm'
             ]))
 
             console.log('EXIF', exifData)

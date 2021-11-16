@@ -2,10 +2,10 @@ const fs = require('fs')
 const path = require('path')
 const gm = require('gm')//.subClass({imageMagick: true})
 
-const CROP_SIZE = [300,300]
+const CROP_SIZE = [800,300]
 const RESIZE_SIZE = [500,500]
-const PHOTOS_PER_LINE = 5
-const DATA_FILE = 'data-zoom-compare'
+const PHOTOS_PER_LINE = 2
+const DATA_FILE = 'data-focax2'
 const OUTPUT_HTML = 'photo.html'
 
 
