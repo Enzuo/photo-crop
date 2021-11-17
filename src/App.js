@@ -6,9 +6,10 @@ import { useState } from 'react'
 function App() {
   const baseImages = [
     // filePath, fileName, crop x, crop y
-    ['P1270870_upscale.JPG','minolta 70mm',1825,1700],
+    ['P1280016.JPG','tamron 23A 60-300',1100,1300],
     // ['P1270811.jpg','tamron 26A',1800,1910],
-    ['P1270872.jpg','minolta 70mm x2',1390,1750],
+    ['P1280020.jpg','tamron 52B 90mm',1040,1200],
+    ['P1280024.jpg','vivitar series 1',1280,1350],
   ]
 
   const [images, setImages] = useState(baseImages)

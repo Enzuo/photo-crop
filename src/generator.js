@@ -2,10 +2,10 @@ const fs = require('fs')
 const path = require('path')
 const gm = require('gm')//.subClass({imageMagick: true})
 
-const CROP_SIZE = [800,300]
-const RESIZE_SIZE = [500,500]
-const PHOTOS_PER_LINE = 2
-const DATA_FILE = 'data-focax2'
+const CROP_SIZE = [500,300]
+const RESIZE_SIZE = [500,800]
+const PHOTOS_PER_LINE = 3
+const DATA_FILE = 'data-tamron60300'
 const OUTPUT_HTML = 'photo.html'
 
 
@@ -145,6 +145,7 @@ function cropPhoto(photo){
     let targetPath = path.join('public','crops', targetName)
 
     let file = gm(sourcePath)
+    file.autoOrient()
     if(shouldCrop){
         file.crop(CROP_SIZE[0], CROP_SIZE[1], photo.cropx, photo.cropy)
     }

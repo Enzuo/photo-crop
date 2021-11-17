@@ -1,3 +1,7 @@
+# Tamron 23A 60-300mm f/3.8-5.4 image compare
+P1270928.jpg,tamron 26A 35-210mm f/3.5-4.2 875g length 121mm+50,
+P1270909.JPG,tamron 23A 60-300mm f/3.8-5.4 870g length 160mm+50(flange),
+P1270926.jpg,sigma 28-300mm f/3.5-6.3 562g length 95mm+46,
 
 # crop 60mm wide open
 --
@@ -108,3 +112,75 @@ P1270861.jpg,sigma ,2190,1850,400,1/20,f/11,300mm,
 --
 P1270858.JPG,tamron 23A,,,400,1/40,f/11,300mm,
 P1270861.jpg,sigma ,,,400,1/20,f/11,300mm,
+
+
+
+# macro
+P1270936.jpg,tamron 52BB 90mm f/2.5 1:2,
+P1270909.JPG,tamron 23A 60-300mm f/3.8-5.4 1:1.55,
+P1270934.jpg,vivitar series 1 70-210mm f/3.5 1:2.2,
+
+
+## similar working distance
+P1270942.jpg,tamron 52BB,,,400,1/640,f/2.5,90mm,
+P1270938.JPG,tamron 23A,,,400,1/400,f/3.8,60mm,
+P1270946.jpg,vivitar series 1,,,400,1/250,f/3.5,70mm,
+
+## wide open
+P1270942.jpg,tamron 52BB,2100,1800,400,1/640,f/2.5,90mm,
+P1270938.JPG,tamron 23A,2000,1500,400,1/400,f/3.8,60mm,
+P1270946.jpg,vivitar series 1,2380,1700,400,1/250,f/3.5,70mm,
+
+## f/8
+P1270944.jpg,tamron 52BB,2000,1900,400,1/50,f/8,90mm,
+P1270940.JPG,tamron 23A,2000,1500,400,1/125,f/8,60mm,
+P1270948.jpg,vivitar series 1,2400,1550,400,1/50,f/8,70mm,
+
+P1270944.jpg,tamron 52BB,2600,0,400,1/50,f/8,90mm,
+P1270940.JPG,tamron 23A,2400,100,400,1/125,f/8,60mm,
+P1270948.jpg,vivitar series 1,2900,0,400,1/50,f/8,70mm,
+
+## f/22
+P1270945.jpg,tamron 52BB,,,400,1/8,f/22,90mm,
+P1270941.JPG,tamron 23A,,,400,1/30,f/16,60mm,
+P1270949.jpg,vivitar series 1,,,400,1/8,f/22,70mm,
+
+
+## similar magnification approx 1:4
+P1270961.jpg,tamron 52BB,,,400,1/640,f/2.5,90mm,
+P1270964.JPG,tamron 23A,,,400,1/200,f/3.8,60mm,
+P1270959.jpg,vivitar series 1,,,400,1/400,f/3.5,70mm,
+
+## crops wide open
+P1270961.jpg,tamron 52BB,1040,1200,400,1/640,f/2.5,90mm,
+P1270964.JPG,tamron 23A,1100,1300,400,1/200,f/3.8,60mm,
+P1270959.jpg,vivitar series 1,1280,1350,400,1/400,f/3.5,70mm,
+
+## f/8
+P1270962.jpg,tamron 52BB,1040,1200,400,1/60,f/8,90mm,
+P1270965.JPG,tamron 23A,1230,1450,400,1/60,f/8,60mm,
+P1270958.jpg,vivitar series 1,1280,1350,400,1/80,f/8,70mm,
+
+
+## max magnification
+P1270980.jpg,tamron 52BB,,,400,1/80,f/8,90mm,
+P1270969.JPG,tamron 23A,,,400,1/60,f/8,60mm,
+P1270987.jpg,vivitar series 1,,,400,1/100,f/8,70mm,
+
+P1270980.jpg,tamron 52BB,1940,1500,400,1/80,f/8,90mm,
+P1270969.JPG,tamron 23A,2250,1600,400,1/60,f/8,60mm,
+P1270987.jpg,vivitar series 1,2150,1650,400,1/100,f/8,70mm,
+
+## max magnification #2
+P1280005.jpg,tamron 52BB,,,400,1/100,f/8,90mm,
+P1280009.JPG,tamron 23A,,,400,1/100,f/8,60mm,
+P1270990.jpg,vivitar series 1,,,400,1/400,f/3.5,70mm,
+
+P1280005.jpg,tamron 52BB,1940,1300,400,1/100,f/8,90mm,
+P1280009.JPG,tamron 23A,2700,900,400,1/100,f/8,60mm,
+P1270990.jpg,vivitar series 1,1980,1950,400,1/400,f/3.5,70mm,
+
+## max magnification #3
+P1280020.jpg,tamron 52BB,2140,2100,400,1/13,f/8,90mm,
+P1280016.JPG,tamron 23A,2100,2000,400,1/15,f/8,60mm,
+P1280024.jpg,vivitar series 1,2380,1850,400,1/30,f/8,70mm,
