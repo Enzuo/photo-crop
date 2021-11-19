@@ -2,11 +2,12 @@ const fs = require('fs')
 const path = require('path')
 const gm = require('gm')//.subClass({imageMagick: true})
 
-const CROP_SIZE = [500,300]
-const RESIZE_SIZE = [500,800]
-const PHOTOS_PER_LINE = 3
-const DATA_FILE = 'data-tamron60300'
+const CROP_SIZE = [800,300]
+const RESIZE_SIZE = [800,800]
+const PHOTOS_PER_LINE = 2
+const DATA_FILE = 'data-sonynex3n'
 const OUTPUT_HTML = 'photo.html'
+const IMG_PATH = 'images_nex'
 
 
 const dataPath = DATA_FILE
@@ -136,7 +137,7 @@ function htmlLegendPhoto(p){
 }
 
 function cropPhoto(photo){
-    let sourcePath = path.join('public','images', photo.source)
+    let sourcePath = path.join('public',IMG_PATH, photo.source)
     let targetName = photo.source
     let shouldCrop = !!photo.cropx
     if(shouldCrop){

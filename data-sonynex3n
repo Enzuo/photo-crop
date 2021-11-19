@@ -1,0 +1,97 @@
+# Comparison sony nex 3n (apsc) with 16-50 at 50mm(75) and gx80 (m4/3) with 40-150 at 40mm(80)
+gx80.JPG,gx80 with olympus 40-150mm
+nex3n.jpg,nex3n with sony 16-50mm
+
+# JPG sooc
+
+## colored leaves
+P1280285.JPG,gx80,,,400,1/250,f/5.6,40mm,
+DSC01031.jpg,nex3n,,,400,1/250,f/5.6,50mm,
+
+## leaves water
+P1280286.JPG,gx80,,,400,1/250,f/5.6,40mm,
+DSC01032.jpg,nex3n,,,400,1/250,f/5.6,50mm,
+
+P1280286.JPG,gx80,2200,1020,400,1/250,f/5.6,40mm,
+DSC01032.jpg,nex3n,2400,1500,400,1/250,f/5.6,50mm,
+
+## shed (focus point is different)
+P1280289.JPG,gx80,,,400,1/800,f/5.6,40mm,
+DSC01035.jpg,nex3n,,,400,1/800,f/5.6,50mm,
+
+P1280289.JPG,gx80,2400,1250,400,1/800,f/5.6,40mm,
+DSC01035.jpg,nex3n,2600,1400,400,1/800,f/5.6,50mm,
+
+## flower
+P1280290.JPG,gx80,,,400,1/80,f/5.6,40mm,
+DSC01036.jpg,nex3n,,,400,1/100,f/5.6,50mm,
+
+P1280290.JPG,gx80,2045,1580,400,1/80,f/5.6,40mm,
+DSC01036.jpg,nex3n,2600,1500,400,1/100,f/5.6,50mm,
+
+## bird cage
+P1280292.JPG,gx80,,,400,1/50,f/5.6,40mm,
+DSC01038.jpg,nex3n,,,400,1/100,f/5.6,50mm,
+
+## bright & shadow
+P1280293.JPG,gx80,,,400,1/640,f/5.6,40mm,
+DSC01041.jpg,nex3n,,,400,1/500,f/5.6,50mm,
+
+P1280293.JPG,gx80,2200,1300,400,1/640,f/5.6,40mm,
+DSC01041.jpg,nex3n,2470,1180,400,1/500,f/5.6,50mm,
+
+## logs iso3200
+P1280298.JPG,gx80,,,3200,1/20,f/5.6,40mm,
+DSC01045.jpg,nex3n,,,3200,1/20,f/5.6,50mm,
+
+P1280298.JPG,gx80,1000,970,3200,1/20,f/5.6,40mm,
+DSC01045.jpg,nex3n,1260,1500,3200,1/20,f/5.6,50mm,
+
+## fish iso3200 
+P1280299.JPG,gx80,,,3200,1/30,f/5.6,40mm,
+DSC01046.jpg,nex3n,,,3200,1/30,f/5.6,50mm,
+
+P1280299.JPG,gx80,1800,1640,3200,1/30,f/5.6,40mm,
+DSC01046.jpg,nex3n,2200,2000,3200,1/30,f/5.6,50mm,
+
+
+# RAW sooc
+## leaves water
+P1280286_raw.JPG,gx80,,,400,1/250,f/5.6,40mm,
+DSC01032_raw.jpg,nex3n,,,400,1/250,f/5.6,50mm,
+
+P1280286_raw.JPG,gx80,2200,1020,400,1/250,f/5.6,40mm,
+DSC01032_raw.jpg,nex3n,2400,1500,400,1/250,f/5.6,50mm,
+
+P1280286.JPG,gx80 (jpg processed),2200,1020,400,1/250,f/5.6,40mm,
+DSC01032.jpg,nex3n (jpg processed),2400,1500,400,1/250,f/5.6,50mm,
+
+## bright & shadow
+P1280293_raw.JPG,gx80,,,400,1/640,f/5.6,40mm,
+DSC01041_raw.jpg,nex3n,,,400,1/500,f/5.6,50mm,
+
+P1280293_raw.JPG,gx80,2200,1300,400,1/640,f/5.6,40mm,
+DSC01041_raw.jpg,nex3n,2470,1180,400,1/500,f/5.6,50mm,
+
+P1280293.JPG,gx80 (jpg processed),2200,1300,400,1/640,f/5.6,40mm,
+DSC01041.jpg,nex3n (jpg processed),2470,1180,400,1/500,f/5.6,50mm,
+
+## logs iso3200
+P1280298_raw.JPG,gx80,,,3200,1/20,f/5.6,40mm,
+DSC01045_raw.jpg,nex3n,,,3200,1/20,f/5.6,50mm,
+
+P1280298_raw.JPG,gx80,1000,970,3200,1/20,f/5.6,40mm,
+DSC01045_raw.jpg,nex3n,1260,1500,3200,1/20,f/5.6,50mm,
+
+P1280298.JPG,gx80 (jpg processed),1000,970,3200,1/20,f/5.6,40mm,
+DSC01045.jpg,nex3n (jpg processed),1260,1500,3200,1/20,f/5.6,50mm,
+
+## fish iso3200 
+P1280299_raw.JPG,gx80,,,3200,1/30,f/5.6,40mm,
+DSC01046_raw.jpg,nex3n,,,3200,1/30,f/5.6,50mm,
+
+P1280299_raw.JPG,gx80,1800,1640,3200,1/30,f/5.6,40mm,
+DSC01046_raw.jpg,nex3n,2200,2000,3200,1/30,f/5.6,50mm,
+
+P1280299.JPG,gx80 (jpg processed),1800,1640,3200,1/30,f/5.6,40mm,
+DSC01046.jpg,nex3n (jpg processed),2200,2000,3200,1/30,f/5.6,50mm,

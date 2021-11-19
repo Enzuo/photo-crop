@@ -3,8 +3,8 @@ import {useState} from 'react'
 import CropSquare from './CropSquare'
 import EXIF from 'exif-js'
 
-export default function Image ({data, onChange}) {
-    const filePath = 'images/' + data[0]
+export default function Image ({data, sourcePath, onChange}) {
+    const filePath = (sourcePath ? sourcePath : 'images') + '/' + data[0]
     const fileName = data[1]
 
     let cropOffsetX = data[2]
